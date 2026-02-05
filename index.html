@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>README.md</title>
+	<meta
+		http-equiv="Content-type"
+		content="text/html;charset=UTF-8"
+	>
+
+	<style>
+		/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+		/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+		body {
+			font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+			font-size: var(--vscode-markdown-font-size, 14px);
+			padding: 0 26px;
+			line-height: var(--vscode-markdown-line-height, 22px);
+			word-wrap: break-word;
+		}
+
+		#code-csp-warning {
+			position: fixed;
+			top: 0;
+			right: 0;
+			color: white;
+			margin: 16px;
+			text-align: center;
+			font-size: 12px;
+			font-family: sans-serif;
+			background-color: #444444;
+			cursor: pointer;
+			padding: 6px;
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .25);
+		}
+
+		#code-csp-warning:hover {
+			text-decoration: none;
+			background-color: #007acc;
+			box-shadow: 2px 2px 2px rgba(0, 0, 0, .25);
+		}
+
+		body.scrollBeyondLastLine {
+			margin-bottom: calc(100vh - 22px);
+		}
+
+		body.showEditorSelection .code-line {
+			position: relative;
+		}
+
+		body.showEditorSelection .code-active-line:before,
+		body.showEditorSelection .code-line:hover:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: -12px;
+			height: 100%;
+		}
+
+		body.showEditorSelection li.code-active-line:before,
+		body.showEditorSelection li.code-line:hover:before {
+			left: -30px;
+		}
+
+		.vscode-light.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.15);
+		}
+
+		.vscode-light.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.40);
+		}
+
+		.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		.vscode-dark.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.4);
+		}
+
+		.vscode-dark.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.60);
+		}
+
+		.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 160, 0, 0.7);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 160, 0, 1);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		a:focus,
+		input:focus,
+		select:focus,
+		textarea:focus {
+			outline: 1px solid -webkit-focus-ring-color;
+			outline-offset: -1px;
+		}
+
+		hr {
+			border: 0;
+			height: 2px;
+			border-bottom: 2px solid;
+		}
+
+		h1 {
+			padding-bottom: 0.3em;
+			line-height: 1.2;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+		}
+
+		h1,
+		h2,
+		h3 {
+			font-weight: normal;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		table>thead>tr>th {
+			text-align: left;
+			border-bottom: 1px solid;
+		}
+
+		table>thead>tr>th,
+		table>thead>tr>td,
+		table>tbody>tr>th,
+		table>tbody>tr>td {
+			padding: 5px 10px;
+		}
+
+		table>tbody>tr+tr>td {
+			border-top: 1px solid;
+		}
+
+		blockquote {
+			margin: 0 7px 0 5px;
+			padding: 0 16px 0 10px;
+			border-left-width: 5px;
+			border-left-style: solid;
+		}
+
+		code {
+			font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+			font-size: 1em;
+			line-height: 1.357em;
+		}
+
+		body.wordWrap pre {
+			white-space: pre-wrap;
+		}
+
+		pre:not(.hljs),
+		pre.hljs code>div {
+			padding: 16px;
+			border-radius: 3px;
+			overflow: auto;
+		}
+
+		pre code {
+			color: var(--vscode-editor-foreground);
+			tab-size: 4;
+		}
+
+		/** Theming */
+
+		.vscode-light pre {
+			background-color: rgba(220, 220, 220, 0.4);
+		}
+
+		.vscode-dark pre {
+			background-color: rgba(10, 10, 10, 0.4);
+		}
+
+		.vscode-high-contrast pre {
+			background-color: rgb(0, 0, 0);
+		}
+
+		.vscode-high-contrast h1 {
+			border-color: rgb(0, 0, 0);
+		}
+
+		.vscode-light table>thead>tr>th {
+			border-color: rgba(0, 0, 0, 0.69);
+		}
+
+		.vscode-dark table>thead>tr>th {
+			border-color: rgba(255, 255, 255, 0.69);
+		}
+
+		.vscode-light h1,
+		.vscode-light hr,
+		.vscode-light table>tbody>tr+tr>td {
+			border-color: rgba(0, 0, 0, 0.18);
+		}
+
+		.vscode-dark h1,
+		.vscode-dark hr,
+		.vscode-dark table>tbody>tr+tr>td {
+			border-color: rgba(255, 255, 255, 0.18);
+		}
+	</style>
+
+	<style>
+		/* Tomorrow Theme */
+		/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+		/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+		/* Tomorrow Comment */
+		.hljs-comment,
+		.hljs-quote {
+			color: #8e908c;
+		}
+
+		/* Tomorrow Red */
+		.hljs-variable,
+		.hljs-template-variable,
+		.hljs-tag,
+		.hljs-name,
+		.hljs-selector-id,
+		.hljs-selector-class,
+		.hljs-regexp,
+		.hljs-deletion {
+			color: #c82829;
+		}
+
+		/* Tomorrow Orange */
+		.hljs-number,
+		.hljs-built_in,
+		.hljs-builtin-name,
+		.hljs-literal,
+		.hljs-type,
+		.hljs-params,
+		.hljs-meta,
+		.hljs-link {
+			color: #f5871f;
+		}
+
+		/* Tomorrow Yellow */
+		.hljs-attribute {
+			color: #eab700;
+		}
+
+		/* Tomorrow Green */
+		.hljs-string,
+		.hljs-symbol,
+		.hljs-bullet,
+		.hljs-addition {
+			color: #718c00;
+		}
+
+		/* Tomorrow Blue */
+		.hljs-title,
+		.hljs-section {
+			color: #4271ae;
+		}
+
+		/* Tomorrow Purple */
+		.hljs-keyword,
+		.hljs-selector-tag {
+			color: #8959a8;
+		}
+
+		.hljs {
+			display: block;
+			overflow-x: auto;
+			color: #4d4d4c;
+			padding: 0.5em;
+		}
+
+		.hljs-emphasis {
+			font-style: italic;
+		}
+
+		.hljs-strong {
+			font-weight: bold;
+		}
+	</style>
+
+	<style>
+		/*
+ * Markdown PDF CSS
+ */
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+			padding: 0 12px;
+		}
+
+		pre {
+			background-color: #f8f8f8;
+			border: 1px solid #cccccc;
+			border-radius: 3px;
+			overflow-x: auto;
+			white-space: pre-wrap;
+			overflow-wrap: break-word;
+		}
+
+		pre:not(.hljs) {
+			padding: 23px;
+			line-height: 19px;
+		}
+
+		blockquote {
+			background: rgba(127, 127, 127, 0.1);
+			border-color: rgba(0, 122, 204, 0.5);
+		}
+
+		.emoji {
+			height: 1.4em;
+		}
+
+		code {
+			font-size: 14px;
+			line-height: 19px;
+		}
+
+		/* for inline code */
+		:not(pre):not(.hljs)>code {
+			color: #C9AE75;
+			/* Change the old color so it seems less like an error */
+			font-size: inherit;
+		}
+
+		/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+		.page {
+			page-break-after: always;
+		}
+	</style>
+
+	<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+	<style>
+		body {
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+	</style>
+	<script>
+		document.addEventListener('contextmenu', function (e) {
+			e.preventDefault();
+		});
+	</script>
+</head>
+
+<body>
+	<script>
+		mermaid.initialize({
+			startOnLoad: true,
+			theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+				? 'dark'
+				: 'default'
+		});
+	</script>
+	<h1 id="examen-pr%C3%A1ctico-%E2%80%93-clase-pedidocontroller">Examen Práctico – Clase <code>PedidoController</code>
+	</h1>
+	<hr>
+	<h2 id="descripci%C3%B3n">Descripción</h2>
+	<p>En un sistema de gestión logística de comercio electrónico, es crucial poder filtrar, organizar y priorizar
+		pedidos en función de características operativas como su zona de entrega y su nivel de urgencia. El método
+		filtrarPorZona permite aislar pedidos que deben entregarse en zonas geográficas específicas, lo cual es útil
+		para la optimización de rutas y asignación de recursos de transporte. Posteriormente, ordenarPorZona organiza
+		dichos pedidos para facilitar la planificación de entregas, priorizando aquellas zonas con mayor código
+		numérico. Por otro lado, agruparPorUrgencia permite identificar rápidamente grupos de pedidos con niveles
+		similares de prioridad de entrega, y explotarGrupo se encarga de aislar de manera eficiente el conjunto de mayor
+		urgencia, lo que resulta clave para cumplir con compromisos de entrega rápida y satisfacción del cliente. Estas
+		operaciones están encadenadas lógicamente para simular procesos reales de análisis en centros de distribución.
+	</p>
+	<h2 id="objetivo">Objetivo</h2>
+	<p>Desarrollar una clase <code>PedidoController</code> que gestione objetos de tipo <code>Pedido</code> con uso de
+		estructuras de datos como <code>Stack</code>, <code>Queue</code>, <code>TreeSet</code> y <code>TreeMap</code>,
+		aplicando razonamiento lógico, campos calculados y métodos encadenados.</p>
+	<h2 id="alt-text"><img
+			src="diagramaUML_pedidos.png"
+			alt="alt text"
+		></h2>
+	<h2 id="modelo-pedido">Modelo: <code>Pedido</code></h2>
+	<p>Cada objeto <code>Pedido</code> posee los siguientes atributos:</p>
+	<ul>
+		<li><code>cliente</code>: nombre del cliente (puede contener espacios y números)</li>
+		<li><code>codigoPostal</code>: código postal en formato <code>&quot;XXXXX-YYY&quot;</code> (5 dígitos, guión, 3
+			dígitos)</li>
+		<li><code>prioridades</code>: lista de enteros que representan niveles de prioridad</li>
+	</ul>
+	<p>Además, contiene <strong>dos campos calculados</strong>:</p>
+	<ul>
+		<li><code>zona</code>: los <strong>últimos 3 dígitos</strong> del código postal (después del guión). TIP:
+			<strong>split(&quot;-&quot;);</strong>
+		</li>
+	</ul>
+	<pre class="hljs"><code><div><span class="hljs-comment">// La zona se calcula con split:</span>
+split(<span class="hljs-string">"-"</span>);
+
+<span class="hljs-comment">// Ejemplo: "28045-301" -&gt; zona: 301</span>
+</div></code></pre>
+	<ul>
+		<li><code>urgencia</code>: suma de prioridades múltiplos de 3 multiplicado por el número de vocales únicas en el
+			nombre del cliente (sin considerar mayúsculas/minúsculas)</li>
+	</ul>
+	<h3 id="ejemplo-de-c%C3%A1lculo-de-urgencia">Ejemplo de cálculo de <code>urgencia</code>:</h3>
+	<p><strong>Pedido 1:</strong></p>
+	<ul>
+		<li><code>cliente</code>: &quot;Ana Maria&quot;</li>
+		<li><code>prioridades</code>: [6, 15, 8, 12, 5]</li>
+		<li>Múltiplos de 3: 6, 15, 12 → suma = 33</li>
+		<li>Vocales únicas en &quot;Ana Maria&quot;: a, i → 2 vocales únicas</li>
+		<li><code>urgencia</code> = 33 × 2 = <strong>66</strong></li>
+	</ul>
+	<p><strong>Pedido 2:</strong></p>
+	<ul>
+		<li><code>cliente</code>: &quot;Jose Luis&quot;</li>
+		<li><code>prioridades</code>: [9, 4, 18, 7]</li>
+		<li>Múltiplos de 3: 9, 18 → suma = 27</li>
+		<li>Vocales únicas en &quot;Jose Luis&quot;: o, e, u, i → 4 vocales únicas</li>
+		<li><code>urgencia</code> = 27 × 4 = <strong>108</strong></li>
+	</ul>
+	<hr>
+	<h2 id="clase-a-implementar-pedidocontroller">Clase a implementar: <code>PedidoController</code></h2>
+	<h3 id="m%C3%A9todo-a-%E2%80%93-filtrarporzonalistpedido-pedidos-int-umbral">Método A –
+		<code>filtrarPorZona(List&lt;Pedido&gt; pedidos, int umbral)</code>
+	</h3>
+	<ul>
+		<li>Retorna un <code>Stack&lt;Pedido&gt;</code></li>
+		<li>Filtra los pedidos con <code>zona &gt; umbral</code></li>
+		<li>Mantiene el orden original en que aparecen</li>
+	</ul>
+	<p><strong>Ejemplo:</strong></p>
+	<pre class="hljs"><code><div>Entrada:
+- Pedido(cliente=&quot;Ana&quot;, codigoPostal=&quot;28045-150&quot;, prioridades=[3,6])  → zona=150
+- Pedido(cliente=&quot;Luis&quot;, codigoPostal=&quot;28045-200&quot;, prioridades=[9])   → zona=200
+- Pedido(cliente=&quot;Maria&quot;, codigoPostal=&quot;28045-100&quot;, prioridades=[12]) → zona=100
+- Pedido(cliente=&quot;Pedro&quot;, codigoPostal=&quot;28045-250&quot;, prioridades=[6])  → zona=250
+
+umbral = 150
+
+Salida (Stack):
+[Pedro(zona=250), Luis(zona=200)]
+</div></code></pre>
+	<hr>
+	<h3 id="m%C3%A9todo-b-%E2%80%93-ordenarporzonastackpedido-pila">Método B –
+		<code>ordenarPorZona(Stack&lt;Pedido&gt; pila)</code>
+	</h3>
+	<ul>
+		<li>Recibe la pila generada en A</li>
+		<li>Devuelve un <code>TreeSet&lt;Pedido&gt;</code> ordenado por:
+			<ul>
+				<li><code>zona</code> descendente</li>
+				<li><code>cliente</code> ascendente</li>
+			</ul>
+		</li>
+		<li>Si cliente y zona son iguales, se considera duplicado y se descarta</li>
+	</ul>
+	<p><strong>Ejemplo:</strong></p>
+	<pre class="hljs"><code><div>Entrada (Stack):
+[Pedro(zona=250), Luis(zona=200)]
+
+Salida (TreeSet ordenado):
+[Pedro(zona=250), Luis(zona=200)]
+</div></code></pre>
+	<hr>
+	<h3 id="m%C3%A9todo-c-%E2%80%93-agruparporurgencialistpedido-pedidos">Método C –
+		<code>agruparPorUrgencia(List&lt;Pedido&gt; pedidos)</code>
+	</h3>
+	<ul>
+		<li>Retorna un <code>TreeMap&lt;Integer, Queue&lt;Pedido&gt;&gt;</code></li>
+		<li>Agrupa los pedidos por el campo <code>urgencia</code></li>
+		<li>El orden del mapa es ascendente según el valor de urgencia</li>
+	</ul>
+	<p><strong>Ejemplo:</strong></p>
+	<pre class="hljs"><code><div>Entrada:
+- Pedido(cliente=&quot;Ana&quot;, urgencia=30)
+- Pedido(cliente=&quot;Luis&quot;, urgencia=60)
+- Pedido(cliente=&quot;Maria&quot;, urgencia=30)
+- Pedido(cliente=&quot;Pedro&quot;, urgencia=45)
+
+Salida (TreeMap):
+{
+  30: Queue[Ana, Maria],
+  45: Queue[Pedro],
+  60: Queue[Luis]
+}
+</div></code></pre>
+	<hr>
+	<h3 id="m%C3%A9todo-d-%E2%80%93-explotargrupomapinteger-queuepedido-mapa">Método D –
+		<code>explotarGrupo(Map&lt;Integer, Queue&lt;Pedido&gt;&gt; mapa)</code>
+	</h3>
+	<ul>
+		<li>Encuentra el grupo con <strong>mayor cantidad de pedidos</strong></li>
+		<li>Si hay empate, selecciona el que tenga <strong>mayor urgencia</strong></li>
+		<li>Retorna un <code>Stack&lt;Pedido&gt;</code> con los pedidos de ese grupo en orden <strong>LIFO</strong></li>
+	</ul>
+	<p><strong>Ejemplo:</strong></p>
+	<pre class="hljs"><code><div>Entrada (TreeMap):
+{
+  30: Queue[Ana, Maria],      ← 2 pedidos
+  45: Queue[Pedro],            ← 1 pedido
+  60: Queue[Luis]              ← 1 pedido
+}
+
+Salida (Stack):
+[Maria, Ana]  ← Grupo de urgencia=30 porque tiene más pedidos (2)
+</div></code></pre>
+	<hr>
+	<h2 id="implementaci%C3%B3n-y-validaci%C3%B3n">Implementación y validación</h2>
+	<p>Para validar tu implementación se ejecutarán pruebas unitarias sobre:</p>
+	<ul>
+		<li>Métodos A, B, C, D</li>
+		<li>Cálculo de <code>zona</code> y <code>urgencia</code></li>
+	</ul>
+	<hr>
+	<h2 id="r%C3%BAbrica-de-evaluaci%C3%B3n-9-puntos">RÚBRICA DE EVALUACIÓN (9 puntos)</h2>
+	<table>
+		<thead>
+			<tr>
+				<th><strong>Componente Evaluado</strong></th>
+				<th><strong>Descripción</strong></th>
+				<th><strong>Puntos</strong></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Campo calculado: <code>zona</code></td>
+				<td>Extrae correctamente los últimos 3 dígitos del código postal</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				<td>Campo calculado: <code>urgencia</code></td>
+				<td>Suma prioridades múltiplos de 3 y multiplica por vocales únicas del cliente (sin considerar
+					mayúsculas)</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				<td>Método A – <code>filtrarPorZona</code></td>
+				<td>Filtra correctamente y mantiene orden de entrada</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				<td>Método B – <code>ordenarPorZona</code></td>
+				<td>Ordena por zona DESC, luego cliente ASC. Elimina duplicados por zona y cliente</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				<td>Método C – <code>agruparPorUrgencia</code></td>
+				<td>Agrupa correctamente en TreeMap con Queue por urgencia</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				<td>Método D – <code>explotarGrupo</code></td>
+				<td>Identifica correctamente el grupo más numeroso y, en caso de empate, el de mayor urgencia. Invierte
+					orden a LIFO</td>
+				<td>1.5</td>
+			</tr>
+			<tr>
+				<td><strong>Total</strong></td>
+				<td></td>
+				<td><strong>9.0</strong></td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+	<h2 id="estructura-esperada">Estructura esperada</h2>
+	<pre class="hljs"><code><div>src/
+├── App.java
+├── controllers/
+│   └── PedidoController.java
+├── models/
+│   └── Pedido.java
+├── test/
+│   └── PedidoControllerTest.java
+└── validaciones/
+    └── ValidacionesPedido.java
+</div></code></pre>
+	<hr>
+	<h2 id="notas-importantes">Notas importantes</h2>
+	<ul>
+		<li>El campo <code>zona</code> debe extraerse correctamente del código postal</li>
+		<li>El campo <code>urgencia</code> debe considerar solo vocales únicas (a, e, i, o, u) sin importar
+			mayúsculas/minúsculas</li>
+		<li>Los múltiplos de 3 incluyen: 3, 6, 9, 12, 15, etc.</li>
+		<li>En caso de empate en <code>explotarGrupo</code>, siempre seleccionar el grupo con mayor valor de urgencia
+		</li>
+		<li>El <code>TreeSet</code> debe eliminar duplicados basándose en zona Y cliente</li>
+		<li>El orden en el <code>Stack</code> resultante de <code>explotarGrupo</code> debe ser LIFO (último en entrar,
+			primero en salir)</li>
+	</ul>
+
+</body>
+
+</html>
